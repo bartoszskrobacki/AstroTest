@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "About me";
 const identity = {
@@ -17,35 +17,12 @@ const skillColor = "navy";
 const fontWeight = "bold";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
-    <style define:vars={{ skillColor, fontWeight }}>
-      h1 {
-        color: purple;
-        font-size: 4rem;
-      }
-      .skill {
-        color: var(--skillColor);
-        font-weight: var(--fontWeight);
-      }
-    </style>
-  </head>
-  <body>
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog">Blog</a>
+<BaseLayout pageTitle={pageTitle}>
+  <h1>My Astro Site</h1>
 
-    <h1>My Astro Site</h1>
-    <h1>{pageTitle}</h1>
-    <h2>My name is {identity.firstName}</h2>
+  <h2>My name is {identity.firstName}</h2>
 
-    <p>I am working through Astro's introductory tutorial. My skills are {skills.map((skill) => <li class="skill">{skill}</li>)}</p>
+  <p>I am working through Astro's introductory tutorial. My skills are {skills.map((skill) => <li class="skill">{skill}</li>)}</p>
 
-    {happy && <p>It says if im happy</p>}
-  </body>
-</html>
+  {happy && <p>It says if im happy</p>}
+</BaseLayout>
